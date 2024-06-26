@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upstox</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="..." crossorigin="anonymous">
+  <style>
+    * {
+      margin: 0;
+    }
+    
+    .navbar {
+      padding: 25px;
+      box-sizing: border-box;
+      background-color: rgb(128, 5, 177); 
+    }
+    
+    .navbar h1 {
+      text-align: center;
+      color: beige;
+    }
+    
+    .navbar a {
+      text-decoration: none;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .nav ul li {
+      list-style: none;
+      margin-right: 30px;
+    }
+    
+    .nav ul li a {
+      text-decoration: none;
+      color: beige;
+      font-size: 18px;
+    }
+
+    .card {
+      width: 200px;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    
+    .card-content {
+      padding: 10px 0;
+      text-align: center;
+    }
+    
+    .card-content p {
+      margin: 5px 0;
+    }
+    
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    
+    .card-actions {
+      text-align: center;
+    }
+    
+    .card-actions button {
+      padding: 5px 10px;
+      margin: 5px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .card-actions button:hover {
+      background-color: #0056b3;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <nav class="nav">
+      <ul>
+        <li><img src="{% static 'img/logo.jpg' %}" style="width: 20%;"></li>
+        <li><a href="{% url 'home'  %}">Home</a></li>
+        <li><a href="#">Trade</a></li>
+        <li><a href="#">News</a></li>
+        {% if user.is_authenticated %}
+        <li style="color: beige;font-size:medium;">Hello, {{user.username}}</li>
+        <li><a href="{% url 'logout'  %}" onclick="noBack()">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'signup'  %}">Signup</a></li> 
+        <li><a href="{% url 'login'  %}">Login</a></li>
+        {% endif %}
+        <li><a href="{% url 'cart'  %}">Watchlist</a></li>
+      </ul>
+    </nav> 
+  </header>
+  <header>
+    
+    
+  </header>
+  
+  <div id="content" style="padding-top: 30px;">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>

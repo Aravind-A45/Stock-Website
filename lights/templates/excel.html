@@ -1,0 +1,30 @@
+
+
+{% block base %}
+<div class="p-4" id="waste">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="p-4">
+          <div class="container">
+            <h1>Upload Excel File</h1>
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="file" name="file" required>
+              <button type="submit">Submit</button>
+            </form>
+            <div class="message mt-3">
+              {% for message in messages %}
+              <p>{{message}}</p>
+              {% endfor %}
+            </div>
+            <br>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
